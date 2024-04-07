@@ -1,0 +1,72 @@
+const app = {
+  name: "Green, Future, Now",
+  company: "Trees 4 Trees ",
+  programYear: {
+    active: 2023,
+    options: [2023,2024]
+  },
+  guide: null,
+  geko: {
+    apiUrl: "https://t4tapi.kolaborasikproject.com/api/",
+    user: {
+      email: "iyas.muzani@trees4trees.org",
+      password: ""
+    }
+  },
+  logo: {
+    sm: "./static/img/logo/logo.png",
+    md: "./static/img/logo/logo.png",
+    lg: "./static/img/logo/logo.png",
+    black: "./static/img/logo/logo-black.png",
+    black2: "./static/img/logo/logo-black-2.png",
+  },
+  server: {
+    local: "http://localhost:8000/api",
+    stagging: "http://localhost:5100",
+    development: "https://backend.geninelabs.live/api",
+    production: "https://api-nursery.t4t-api.org/api",
+    demo: "https://backend.geninelabs.live/api"
+  },
+  download: {
+    android: "https://play.google.com/store/",
+    ios: "https://www.apple.com/id/app-store/"
+  },
+  options: {
+    allowRegister: false,
+    forgetPassword: false,
+    autofill: false,
+    myAction: false
+  },
+  apikey: {
+    gmap: "",
+    instagram:
+      ""
+  },
+  midtrans: {
+    merchantID: "",
+    clientKey: "",
+    serverKey: ""
+  },
+  mapbox: {
+    token: "",
+    mapStyle: "mapbox://styles/mapbox/satellite-streets-v11"
+  },
+  midtrans: {
+    // const snapSrcUrl = 'https://app.sandbox.midtrans.com/snap/snap.js';
+    productionUrl: "https://app.midtrans.com/snap/snap.js",
+    sandboxUrl: "https://app.sandbox.midtrans.com/snap/snap.js"
+  },
+  paypal: {
+    sandboxAccount: "",
+    sandboxClientId: "",
+    sandbox: "",
+    production: ""
+  }
+};
+
+// =========================================================
+// File CUSTOM Variable SCSS
+// static\assets\sass\components\_variables.demo.scss
+// =========================================================
+
+export default app;
