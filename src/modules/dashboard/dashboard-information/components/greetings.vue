@@ -19,7 +19,7 @@
           </span>
         </p>
       </b-card-title>
-      <p>Selamat datang di Nursery Management System (NMS) {{ mode == 'development' ? 'Development' : '' }} Trees4Trees.</p>
+      <p>Selamat datang di {{ config.name }} {{ mode == 'development' ? 'Development' : '' }}.</p>
       <div class="d-flex align-items-center mt-5">
         <div class="symbol symbol-100 mr-5">
           <div v-if="profile.img_photo_user" class="symbol-label" :style="{backgroundImage: 'url(' + profile.img_photo_user.url + ')' }"></div>
@@ -39,6 +39,7 @@
 
 <script>
 import mode from "@/mode.js";
+import config from "@/config.js";
 
 export default {
   name: 'NurseryFeGreetings',
@@ -47,6 +48,7 @@ export default {
     return {
       isLoading: true,
       mode: mode || 'development',
+      config: config || {},
       profile: {},
       tableDetailProfile: [],
       time: {

@@ -431,55 +431,6 @@
       </div>
 
       <!-- Scan Barcode -->
-      <div v-else-if="item.type === 'scan-barcode'">
-        <b-modal :id="`scan-barcode-modal-${item.scanKey || 0}`" :title="item.label || item.labelButton" hide-footer>
-          <qrcode-stream v-if="!tmp_value" :track="paintOutline" @detect="onDetectScanBarcode"></qrcode-stream>
-          <b-button
-            v-else
-            variant="warning"
-            :disabled="!tmp_value"
-            @click="tmp_value = null"
-            block
-          >
-            <i class="ri-qr-scan-2-line"></i>
-            Scan Ulang
-          </b-button>
-          <input
-            v-model="tmp_value"
-            type="text"
-            class="form-control my-5"
-            placeholder="Scanned data..."
-          />
-          <div class="d-flex align-items-center justify-content-center">
-            <b-button
-              variant="primary"
-              :disabled="!tmp_value"
-              @click="saveScanBarcode()"
-            >
-              <i class="ri-checkbox-line"></i>
-              Simpan
-            </b-button>
-          </div>
-        </b-modal>
-        <a
-          v-if="item.btnType == 'circle'"
-          :disabled="item.disabled ? true : false"
-          v-b-modal="`scan-barcode-modal-${item.scanKey || 0}`"
-          class="btn btn-info btn-icon btn-circle"
-          v-b-tooltip.top="item.btnTooltip || null"
-        >
-            <i class="ri-qr-scan-2-line p-0"></i>
-        </a>
-        <b-button
-            v-else
-            v-b-modal="`scan-barcode-modal-${item.scanKey || 0}`"
-            :disabled="item.disabled ? true : false"
-            variant="info"
-        >
-            <i class="ri-qr-scan-2-line"></i>
-            {{ item.labelButton || 'Scan Barcode' }}
-        </b-button>
-      </div>
 
       <!-- Input Type Lookup  -->
       <lookup-input
@@ -513,11 +464,9 @@
 
 <script>
 import _config from "@/config.js";
-import { QrcodeStream } from 'vue-qrcode-reader'
 export default {
   name: "minimalize-input",
   components: {
-      QrcodeStream
   },
   props: {
     item: { type: Object, required: true },

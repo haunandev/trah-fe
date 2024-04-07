@@ -28,78 +28,15 @@ export default {
   data() {
     return {
       dataMaps: [],
-      isLoadingLocationNursery: false,
-      nursery_id: 'all',
-      optionNurseries: [],
       tempDataMaps: [],
     };
   },
   beforeMount() {},
   watch: {},
   methods: {
-    getDataGeko: async function (){
-      await this.$_api.get("https://t4tapi.kolaborasikproject.com/api/GekoDashboardAllOutside?program_year=2022&source=Realisasi Tanam&province=all").then(response => {
-        const data = response.data.result.total
-        this.cardData = [
-          {
-            label: "Total Trees",
-            color: "#218AEC",
-            icon: "ri-seedling-line",
-            value: data.trees,
-            background: "#ebffe7"
-          },
-          {
-            label: "Total Fields",
-            color: "#218AEC",
-            icon: "ri-recycle-line",
-            value: data.land_total,
-            background: "#DEEDFC"
-          },
-          {
-            label: "Total Farmers",
-            color: "#6E9A34",
-            icon: "ri-empathize-line",
-            value: data.farmer,
-            background: "#ebffe7"
-          },
-          {
-            label: "Total Donations",
-            color: "#F25F5F",
-            icon: "ri-first-aid-kit-line",
-            value: 0,
-            background: "#FDE7E7"
-          }
-        ];
-      });
-    },
     initDashboard: async function () {
       const user = this.$_sys.userInfo()
       console.log('user',user)
-      // get list nursery data
-      if (!user.location_nursery_id) {
-        try {
-          this.isLoadingLocationNursery = true
-          const nurseries = await this.$_api.list('master_location_nurserys', {
-            limit: 20,
-            active: 1
-          }).then(res => res.data)
-          this.optionNurseries = nurseries.map(v => {
-            return {
-              label: v.name_location_nursery,
-              code: v.id
-            }
-          })
-        } catch (error) {
-          console.log('initDashboard() error', error)
-          this.$_alert.error(error)
-        } finally {
-          this.isLoadingLocationNursery = false
-        }
-      }
-      // get data all
-      await setTimeout(() => {
-        this.onChangeLocationNurseryId(user.location_nursery_id || 'all')
-      }, 100);
     },
     initMap: async function (){
       this.$_api.get("/public/syt",{
@@ -180,29 +117,10 @@ export default {
       });
 
     },
-    onChangeLocationNurseryId: async function (location_id) {
-      this.isLoadingLocationNursery = true
-      try {
-        for (let index = 0; index < 3; index++) {
-          // load stock data
-          if (this.$children[index] && typeof this.$children[index].initStockData == 'function') {
-            this.$children[index].initStockData(location_id)
-          } 
-          // load waiting request procurement data
-          if (this.$children[index] && typeof this.$children[index].getTableWatingApprovalProcurementSeed == 'function') {
-            this.$children[index].getTableWatingApprovalProcurementSeed(location_id)
-          } 
-        }
-      } catch (error) {
-        console.log('onChangeLocationNurseryId() error', error)
-        this.$_alert.error(error)
-      } finally {this.isLoadingLocationNursery = false}
-    },
   },
   mounted: async function () {
     await this.initDashboard()
     // this.initMap();
-    // this.getDataGeko();
 
     // mapboxgl.accessToken = _config.mapbox.token;
     //     var map = new mapboxgl.Map({
