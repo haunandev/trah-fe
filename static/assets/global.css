@@ -2,7 +2,7 @@
 @import "/plugins/flaticon2/flaticon.css";
 @import "/plugins/keenthemes-icons/font/ki.css";
 :root {
-  --primary-color: #6e9a34;
+  --primary-color: #77cf8c;
   --light-primary-color: #81b53d;
 
   --primary-rgb: 31, 79, 148;
@@ -10,8 +10,8 @@
   --primary-contrast-rgb: 255, 255, 255;
   --primary-shade: #1b4682;
   --primary-tint: #35619f;
-  --fc-button-bg-color: #6e9a34;
-  --fc-button-border-color: #6e9a34;
+  --fc-button-bg-color: #77cf8c;
+  --fc-button-border-color: #77cf8c;
   --fc-button-hover-bg-color: #81b53d;
   --fc-button-hover-border-color: #81b53d;
   --fc-button-active-bg-color: #4f6f26;
@@ -396,7 +396,7 @@ input {
 }
 
 .btn-primary-light {
-  color: #6e9a34 !important;
+  color: #77cf8c !important;
   background-color: #edf5e1 !important;
   border-color: #f6f6f6 !important;
 }
@@ -416,8 +416,8 @@ input {
 
 .btn.btn-primary-light:not(:disabled):not(.disabled).active {
   color: #fff !important;
-  background-color: #6e9a34 !important;
-  border-color: #6e9a34 !important;
+  background-color: #77cf8c !important;
+  border-color: #77cf8c !important;
 }
 
 .table-matrix {
